@@ -91,7 +91,6 @@ export async function getSchedule({ query, params, body }: Request, res: Respons
             res.status(403).send({ message: 'Something failed in the scraping process - Lv 1' });
         }
     } catch (error) {
-        console.log("🚀 ~ file: SIIUAM.ts ~ line 92 ~ getSchedule ~ error", error)
         res.status(409).send({ message: 'Scraping process crashed' });
     } finally {
         await browser.close();
