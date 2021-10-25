@@ -4,7 +4,6 @@ import helmet from 'helmet';
 import morgan from 'morgan';
 // import moduleName from 'http-delayed-response'
 
-const DelayedResponse = require('http-delayed-response');
 
 import { config } from './config/config';
 import api from './routes/api.routes';
@@ -44,9 +43,7 @@ app.get('/', (req: Request, res: Response) => res.json({
   deprecated: app.get('pkg').deprecated,
 }));
 
-app.use('/api', function (req, res, next) {
-  return setTimeout(() => api, 15_000);
-});
+app.use('/api', api);
 
 
 /*------------------------------------------------------------------*/
