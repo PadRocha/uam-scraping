@@ -17,12 +17,17 @@ router.route('/ueas/:USER/:PASS')
     .get((req, res, next) => {
         const delayed = new DelayedResponse(req, res, next);
         delayed.wait();
-        const promise = getUEAS(req, res)
+        const promise = getUEAS(req, res);
         delayed.end(promise);
     });
 
 router.route('/schedule/:USER/:PASS')
-    .get(getSchedule);
+    .get((req, res, next) => {
+        const delayed = new DelayedResponse(req, res, next);
+        delayed.wait();
+        const promise = getSchedule(req, res);
+        delayed.end(promise);
+    });
 
 /*------------------------------------------------------------------*/
 
