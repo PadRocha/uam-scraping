@@ -45,7 +45,7 @@ app.get('/', (req: Request, res: Response) => res.json({
 }));
 
 app.use('/api', function (req, res, next) {
-  setTimeout(() => next(), 2000);
+  return setTimeout(() => api, 15_000);
 });
 
 
