@@ -11,7 +11,7 @@ export async function getUEAS({ query, params, body }: Request, res: Response) {
     if (!USER || !PASS)
         return res.status(400).send({ message: 'Client has not sent params' });
 
-    const browser = await puppeteer.launch({ headless: false });
+    const browser = await puppeteer.launch({ headless: true });
     try {
         const { info_frame } = await loginSIIUAM(USER, PASS, browser);
 
@@ -41,7 +41,7 @@ export async function getSchedule({ query, params, body }: Request, res: Respons
     if (!USER || !PASS)
         return res.status(400).send({ message: 'Client has not sent params' });
 
-    const browser = await puppeteer.launch({ headless: false });
+    const browser = await puppeteer.launch({ headless: true });
     try {
         const { menu_frame, info_frame, SIIUAM } = await loginSIIUAM(USER, PASS, browser);
 
