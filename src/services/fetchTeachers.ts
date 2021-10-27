@@ -7,7 +7,7 @@ export async function fetchTeachers(browser: puppeteer.Browser, teachers: Set<st
     const MISPROFESORES = await browser.newPage();
     const teacherData = new Map<string, teacherData>();
 
-    MISPROFESORES.setDefaultNavigationTimeout(15_000_000);
+    MISPROFESORES.setDefaultNavigationTimeout(config.TIMEOUT);
     await MISPROFESORES.goto(config.MISPROFESORES, { waitUntil: 'load', timeout: 0 });
 
     for await (const teacher of teachers) {
