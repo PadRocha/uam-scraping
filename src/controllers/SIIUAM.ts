@@ -140,7 +140,7 @@ export async function getSchedule({ query, params, body }: Request, res: Respons
                         }
                     }
 
-                    const sorted_iterations = Array.from(all_combinations).sort(([, schedule_a], [, schedule_b]) => {
+                    let sorted_iterations = Array.from(all_combinations).sort(([, schedule_a], [, schedule_b]) => {
                         const a = Array.from(schedule_a).reduce((prev, [, schedule_percent]) => {
                             return prev += schedule_percent.teacher.quality;
                         }, 0) / schedule_a.size;
@@ -150,12 +150,23 @@ export async function getSchedule({ query, params, body }: Request, res: Respons
                         return a - b;
                     }).reverse();
 
-                    res.status(200).send(sorted_iterations.map(([SCHEDULECODE, schedule]) => {
-                        return {
-                            SCHEDULECODE,
-                            schedule: Array.from(schedule.entries())
-                        }
-                    }));
+                    if (body?.queryTeachers instanceof Array) {
+                        sorted_iterations = sorted_iterations.filter(([, schedule_filter]) => {
+                            return !Array.from(schedule_filter.entries()).every(([, uea_filter]) => {
+                                return body.queryTeachers.includes(uea_filter.teacher.name);
+                            });
+                        });
+                    }
+
+
+                    res.status(200).send(sorted_iterations
+                        .slice(body?.skip || 0, body?.limit || -1)
+                        .map(([SCHEDULECODE, schedule]) => {
+                            return {
+                                SCHEDULECODE,
+                                schedule: Array.from(schedule.entries())
+                            }
+                        }));
                 } else {
                     res.status(403).send({ message: 'Something failed in the scraping process - Lv 3' });
                 }

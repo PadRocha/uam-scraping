@@ -1,6 +1,6 @@
-# Backend Template
+# UAM Scraping Schedule.
 
-by Cétr!co.Productions <img src=".\assets\icon-1024x1024.png" style="zoom:2%;" />
+by Cétr!co.Productions
 
 [TOC]
 
@@ -12,112 +12,182 @@ by Cétr!co.Productions <img src=".\assets\icon-1024x1024.png" style="zoom:2%;" 
 npm start
 ```
 
-Start the server.
+Iniciar Servidor.
 
 ```
 npm run dev
 ```
 
-Activate Typescript Observer (use while project is in development).
-
-```
-npm run docs
-```
-
-Generate the Api documentation and open it in browser default.
+Iniciar Servidor en development.
 
 ```
 npm build
 ```
 
-Compile all Typescript file.
+Compilar código.
 
-### Dependencies
+## Usage
 
-| Package                                                                                                                                     | Purpose                                                                                                                                                                                                                                                                                                                    |
-| :------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [bcryptjs](https://www.npmjs.com/package/bcryptjs) & [@types](https://www.npmjs.com/package/@types/bcryptjs)                                | Optimized bcrypt in JavaScript with zero dependencies. Compatible to the C++ [bcrypt](https://npmjs.org/package/bcrypt) binding on node.js and also working in the browser.                                                                                                                                                |
-| [cors](https://www.npmjs.com/package/cors) & [@types](https://www.npmjs.com/package/@types/cors)                                            | CORS is a node.js package for providing a [Connect](http://www.senchalabs.org/connect/)/[Express](http://expressjs.com/) middleware that can be used to enable [CORS](http://en.wikipedia.org/wiki/Cross-origin_resource_sharing) with various options.                                                                    |
-| [dayjs](https://www.npmjs.com/package/dayjs)                                                                                                | Day.js is a minimalist JavaScript library that parses, validates,  manipulates, and displays dates and times for modern browsers with a  largely Moment.js-compatible API. If you use Moment.js, you already know how to use Day.js.                                                                                       |
-| [dotenv](https://www.npmjs.com/package/dotenv) & [@types](https://www.npmjs.com/package/@types/dotenv)                                      | Dotenv is a zero-dependency module that loads environment variables from a `.env` file into [`process.env`](https://nodejs.org/docs/latest/api/process.html#process_process_env). Storing configuration in the environment separate from code is based on [The Twelve-Factor App](http://12factor.net/config) methodology. |
-| [express](https://www.npmjs.com/package/express) & [@types](https://www.npmjs.com/package/@types/express)                                   | Fast, unopinionated, minimalist web framework for [node](http://nodejs.org).                                                                                                                                                                                                                                               |
-| [fmt](https://www.npmjs.com/package/fmt)                                                                                                    | Command Line Output Formatting                                                                                                                                                                                                                                                                                             |
-| [fs-extra](https://www.npmjs.com/package/fs-extra) & [@types](https://www.npmjs.com/package/@types/fs-extra)                                | `fs-extra` adds file system methods that aren't included in the native `fs` module and adds promise support to the `fs` methods. It also uses [`graceful-fs`](https://github.com/isaacs/node-graceful-fs) to prevent `EMFILE` errors. It should be a drop in replacement for `fs`.                                         |
-| [helmet](https://www.npmjs.com/package/helmet) & [@types](https://www.npmjs.com/package/@types/helmet)                                      | Helmet helps you secure your Express apps by setting various HTTP headers. *It's not a silver bullet*, but it can help!                                                                                                                                                                                                    |
-| [jsonwebtoken](https://www.npmjs.com/package/jsonwebtoken) & [@types](https://www.npmjs.com/package/@types/jsonwebtoken)                    | This was developed against `draft-ietf-oauth-json-web-token-08`. It makes use of [node-jws](https://github.com/brianloveswords/node-jws).                                                                                                                                                                                  |
-| [mongoose](https://www.npmjs.com/package/mongoose) & [@types](https://www.npmjs.com/package/@types/mongoose)                                | Mongoose is a [MongoDB](https://www.mongodb.org/) object modeling tool designed to work in an asynchronous environment. Mongoose supports both promises and callbacks.                                                                                                                                                     |
-| [mongoose-paginate-v2](https://www.npmjs.com/package/mongoose-paginate-v2) & [@types](https://github.com/PadRocha/mongoose-paginate-v2.git) | A cursor based custom pagination library for [Mongoose](http://mongoosejs.com) with customizable labels.                                                                                                                                                                                                                   |
-| [morgan](https://www.npmjs.com/package/morgan) & [@types](https://www.npmjs.com/package/@types/morgan)                                      | HTTP request logger middleware for node.js                                                                                                                                                                                                                                                                                 |
-| [multer](https://www.npmjs.com/package/multer) & [@types](https://www.npmjs.com/package/@types/multer)                                      | Multer is a node.js middleware for handling `multipart/form-data`, which is primarily used for uploading files. It is written on top of [busboy](https://github.com/mscdex/busboy) for maximum efficiency.                                                                                                                 |
-| [uuid](https://www.npmjs.com/package/uuid) & [@types](https://www.npmjs.com/package/@types/uuid)                                            | For the creation of [RFC4122](http://www.ietf.org/rfc/rfc4122.txt) UUIDs                                                                                                                                                                                                                                                   |
+Para el funcionamiento de este código se necesita un http request como [Postman](https://www.postman.com/) o alguno [online](https://reqbin.com/post-online). El proceso puede demorar aproximadamente de tres a cinco mínutos dependiendo de la conexión a internet.
 
-### Developer dependencies
+### Authorization
 
-| Package                                                  | Purpose                                                                                                                                                                                                                                                                   |
-| -------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [@types/node](https://www.npmjs.com/package/@types/node) | This package contains type definitions for Node.js (http://nodejs.org/).                                                                                                                                                                                                  |
-| [apidoc](https://apidocjs.com/)                          | apiDoc creates a documentation from API annotations in your source code.                                                                                                                                                                                                  |
-| [tsc-watch](https://www.npmjs.com/package/tsc-watch)     | `tsc-watch` starts a TypeScript compiler with `--watch` parameter, with the ability to react to compilation status. `tsc-watch` was created to AUTH an easy dev process with  TypeScript. Commonly used to restart a node server, similar to nodemon  but for TypeScript. |
-| [typescript](https://www.typescriptlang.org/docs)        | TypeScript is an open-source language which builds on JavaScript, one of the world’s most used tools, by adding static type definitions.                                                                                                                                  |
+Como el proceso incluye loggearse a la página de la UAM requiere de el usuario y contraseña, por lo tanto, cada vez que vea {{USER}} & {{PASS}} será la indicación para que los remplace por los respectivos campos.
 
-### Optional dependencies
+> Es de vital importancia remarcar que pueden revisar el código antes de su uso para verificar que sus datos jamás son almacenados.
 
-| Package                                                                                           | Purpose                                                                                                                                                                                                                                             |
-| ------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [cloudinary](https://cloudinary.com/documentation/node_integration#node_js_getting_started_guide) | Cloudinary's Node.js SDK provides simple, yet comprehensive image and  video upload, transformation, optimization, and delivery capabilities  that you can implement using code that integrates seamlessly with your  existing Node.js application. |
-| [socket.io](https://www.npmjs.com/package/socket.io)                                              | Socket.IO enables real-time bidirectional event-based communication.                                                                                                                                                                                |
+### Get UEA´s
 
-## Folders
+Example:
 
-### Config
-
-> This directory includes default configuration files and values.
->
-
-| File     | Purpose                                                                                             |
-| -------- | --------------------------------------------------------------------------------------------------- |
-| config   | Create an object with the environment variables if they exist or, failing that, set default values. |
-| custom.d | Set additional Typescript interfaces in project.                                                    |
-
-### Controllers
-
-> The controller class handles incoming requests, validates them and sends the response data back to the client.
-
-### Middlewares
-
-> This folder includes all the API’s global middlewares like authentication, compression, request logging etc.
-
-### Models
-
-> The model represents the database model for its component.
-
-Template model code.
-
-```typescript
-import { Document, model, Schema } from 'mongoose';
-export interface IModel extends Document {};
-const modelSchema = new Schema<IModel>({});
-export default model<IModel>('Model', modelSchema);
+```http
+http://localhost:5885/api/ueas/{{USER}}/{{PASS}}
 ```
 
-Template model code with [mongoose-paginate-v2](https://www.npmjs.com/package/mongoose-paginate-v2) plug in.
+Response example:
 
-```typescript
-import { Document, model, PaginateModel, Schema } from 'mongoose';
-import mongoosePaginate from 'mongoose-paginate-v2';
-export interface IModel extends Document {};
-const modelSchema = new Schema<IModel>({});
-modelSchema.plugin(mongoosePaginate);
-interface ModelModel<T extends Document> extends PaginateModel<T> { };
-export default model<IModel>('Line', modelSchema) as ModelModel<IModel>;
+```json
+{
+    "ueas": [
+        {
+            "key": "1111081",
+            "name": "Dinámica del Cuerpo Rígido"
+        },
+        {
+            "key": "1111092",
+            "name": "Laboratorio de Movimiento de una Partícula"
+        }
+        ...
+    ]
+}
 ```
 
-### Routes
+La respuesta trae todas las materias que está marcadas como *uea_disponible* y saber que materias están disponibles
 
-> Here we define our API endpoints for the corresponding component and assign the *controller* methods to them. Moreover we can do things like authorization (e.g.  JWT), permission validation (e.g. ACL) or add component specific  middleware.
+### Get Schedules
 
-### Services
+Example:
 
-> Service include functions that can be reusable in different parts of the code.
+```http
+http://localhost:5885/api/schedule/{{USER}}/{{PASS}}
+```
 
-## Root src files
+Body JSON data
+
+**ueas** property
+
+```json
+{
+    "ueas": [
+        {
+            "key": "1111081",
+            "name": "Dinámica del Cuerpo Rígido"
+        },
+        {
+            "key": "1111092",
+            "name": "Laboratorio de Movimiento de una Partícula"
+        }
+        ...
+    ],
+    ...
+}
+```
+
+Usando el método anterior puede especificar qué materias de las que el horario esté compuesto, por default traerá todas las uea y tratará de armar un horario con todas ellas.
+
+**queryTeachers** property
+
+```json
+{
+    ...
+    "queryTeachers": [
+        "NOMBRE DE MAESTRO QUE IMPARTE UNA MATERIA",
+        ...
+    ],
+    ...
+}
+```
+
+Se puede especificar que maestros deseamos poder ver dentro de los horarios posibles, en caso de encontrar un horario que no incluya este maestro, no lo mostrará, por default enseñará todos los posibles
+
+> Puede darse el caso que el maestro buscado de como resultado un horario vacío, por distintos factores
+
+**skip** property
+
+```json
+{
+    ...
+    "skip": 1,
+    ...
+}
+```
+
+Se puede usar para pasar elementos dentro de la respuesta, por default no pasará ni un elemento.
+
+**limit** property
+
+```json
+{
+    ...
+    "limit": 1
+}
+```
+
+Se puede usar para limitar el número de horarios que se retornan, por default traerá todos los listados.
+
+Response example:
+
+```json
+[
+    {
+        "SCHEDULECODE": "CTG81CÁLRALLINMPOCTG09LABULAENREDOCSI01LABTOSOSCARACCB81MATTASALENIKCSI01PROTOSJOSLEZCTG85TERICAJULRES000000",
+        "schedule": [
+            [
+                "Cálculo Integral",
+                {
+                    "teacher": {
+                        "name": "NOMBRE DE MAESTRO QUE IMPARTE UNA MATERIA",
+                        "quality": 8.9,
+                        "takeAgain": 89,
+                        "difficulty": 4.5,
+                        "students": 175
+                    },
+                    "group": "CTG81",
+                    "monday": {
+                        "starts": 16,
+                        "ends": 17.3
+                    },
+                    "tuesday": {
+                        "starts": 16,
+                        "ends": 17.3
+                    },
+                    "wednesday": {
+                        "starts": 16,
+                        "ends": 17.3
+                    },
+                    "thursday": null,
+                    "friday": {
+                        "starts": 16,
+                        "ends": 17.3
+                    }
+                }
+            ],
+            ...
+    },
+    ...
+}
+```
+
+## Error Timeout
+
+Es probable que por una mala conexión el programa colapse, debido a que en el proceso de extracción de información no se logró cargar a tiempo algo, una solución ante este problema es extender el tiempo de espera en el timeout, dentro del proyecto hay una carpeta llamada *src* donde existe un archivo llamado *config.ts*.
+
+```typescript
+export const config = {
+    ...
+    TIMEOUT: 5_000,
+    ...
+} as const;
+```
+
+Dependiendo de su conexión de internet se recomienda aumentar el tiempo de espera, con consecuencia que el proceso demorará más tiempo en finalizarse.
