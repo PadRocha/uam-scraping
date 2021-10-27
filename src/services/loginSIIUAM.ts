@@ -22,8 +22,6 @@ export async function loginSIIUAM(USER: string, PASS: string, browser: puppeteer
         await menu_frame.type('input[name="COMPLEMENTO.IDENTIFICACION.NONMODELED"]', PASS);
         await menu_frame.click('input[name="GO.IDENTIFICACION.NONMODELED"]');
         await SIIUAM.waitForTimeout(config.TIMEOUT);
-        await menu_frame.click('a[href="CTWBS012"]');
-        await SIIUAM.waitForTimeout(config.TIMEOUT);
     }
 
     return {
